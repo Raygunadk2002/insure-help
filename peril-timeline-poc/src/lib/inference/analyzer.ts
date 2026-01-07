@@ -120,8 +120,8 @@ export class CaseAnalyzer {
     }
 
     // Compare uncertainty drivers
-    const prevDrivers = new Set(prevTheory.uncertaintyDrivers);
-    const currentDrivers = new Set(currentTheory.uncertaintyDrivers);
+    const prevDrivers = new Set<string>(prevTheory.uncertaintyDrivers);
+    const currentDrivers = new Set<string>(currentTheory.uncertaintyDrivers);
 
     // Resolved uncertainties
     for (const driver of prevDrivers) {
