@@ -1,7 +1,7 @@
 // FILE: src/app/case/[id]/page.tsx
 "use client";
 
-import { useState, use } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -27,13 +27,12 @@ import { CaseAnalyzer } from "@/lib/inference/analyzer";
 import { formatDate, intervalWidth } from "@/lib/utils";
 import type { EvidenceItem, TimelineEvent, NextAction } from "@/types";
 
-export default function CasePage({ params }: { params: Promise<{ id: string }> }) {
-  const resolvedParams = use(params);
+export default function CasePage({ params }: { params: { id: string } }) {
   const [activeTab, setActiveTab] = useState("overview");
 
   // Load case data
   const cases = getAllCases();
-  const caseItem = cases.find((c) => c.id === resolvedParams.id);
+  const caseItem = cases.find((c) => c.id === params.id);
 
   if (!caseItem) {
     return <div className="p-8">Case not found</div>;
